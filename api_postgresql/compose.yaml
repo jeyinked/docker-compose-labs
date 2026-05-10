@@ -1,0 +1,42 @@
+services:
+  db:
+    image: postgres
+    container_name: postgres_container
+    networks:
+      - db_network
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=myapp
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=secret
+
+
+  api:
+    image: python:3
+    container_name: api_container
+    working_dir: /app
+    volumes:
+      - ${PWD}/api:/app
+    command: python app.py
+    depends_on:
+      - db
+    networks:
+      - db_network
+    environment:
+      - DB_HOST=db
+      - DB_NAME=myapp
+      - DB_USER=admin
+      - DB_PASSWORD=secret
+
+
+volumes:
+  postgres_data:
+
+
+networks:
+  db_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.30.0.0/24
