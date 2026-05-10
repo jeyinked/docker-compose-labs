@@ -6,7 +6,7 @@ A collection of hands-on Docker and Docker Compose labs focused on container net
 
 ### nginx-custom-image
 
-Custom Nginx image built with a Dockerfile and deployed with Docker Compose.
+Custom Nginx image built with Dockerfile and deployed with Docker Compose.
 
 Concepts covered:
 
@@ -37,12 +37,18 @@ Concepts covered:
 * Docker
 * Docker Compose
 
-## Run a project
+## Clone the Repository
+
+```bash id="r83mxa"
+git clone https://github.com/jeyinked/docker-compose-labs.git
+```
+
+## Run a Project
 
 Example:
 
-```bash
-cd nginx-python-reverse-proxy
+```bash id="u72xqp"
+cd docker-compose-labs/nginx-python-reverse-proxy
 docker compose up -d
 ```
 
